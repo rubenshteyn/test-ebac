@@ -1,0 +1,525 @@
+$white: #fff;
+$black: #000;
+$blueBlack: #0C0032;
+$blue1: #190061;
+$blue2: #3500D3;
+$blackBack: #282828;
+$gradient1: linear-gradient(201.09deg,#2a83c4 12.99%,#9d32f0 66.43%,#8223c8 90.92%);
+$gray: #999;
+$purple: #8654cd;
+
+html{
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  color: $black;
+  margin: unset !important;
+}
+
+html, body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body,
+a,
+button,
+input{
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 0.938rem;
+  line-height: 1.15;
+  border-right: 0;
+  border-left: 0;
+  border-top: 0;
+  width: 100%;
+  background: unset;
+}
+input {
+  color: $gray;
+}
+button {
+  color: $white;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body{
+  position: relative;
+  width: 100%;
+  overflow-y: auto;
+
+  @media screen and (max-width: 900px){
+    min-height: 100%;
+    height: auto;
+    max-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: visible;
+    .container {
+      padding: 2rem 2rem;
+    }
+    .panel__form-big-wrapper {
+      width: 100% !important;
+    }
+    .change-img {
+      margin-bottom: 2rem;
+    }
+    .panel__forms {
+      width: 100%;
+    }
+  }
+}
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  background-image: url("../assets/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 100% 100%;
+  background-color: #0f062f;
+  padding: 2rem 9rem;
+}
+button{
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  &:active,
+  &:hover {
+    outline: 0;
+  }
+}
+a{
+  text-decoration: none;
+  cursor: pointer;
+  &:active,
+  &:hover {
+    outline: 0;
+  }
+}
+
+.panel_blur,
+.panel{
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  @media screen and (min-width: 768px){
+    //width: 350px;
+    //height: 500px;
+    overflow-y: visible;
+  }
+}
+/**
+ * Blur
+ */
+.panel_blur{
+  background-size: 100% 100%;
+  filter: blur(5px);
+}
+/**
+ * Panel
+ */
+.panel{
+  justify-content: space-between;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 1;
+  .change-data {
+  }
+  .change-password {
+    padding: 20px 40px 40px;
+    .panel__headers{
+      text-align: center;
+      height: fit-content;
+    }
+    .form{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      &__errors {
+        span {
+          position: unset;
+        }
+      }
+      &__row-two-current-password {
+        margin-right: 1rem;
+      }
+      button {
+        width: 120px;
+      }
+      button:disabled {
+        opacity: 0.7;
+    }
+      &__row-btns{
+        margin-top: 40px;
+      }
+      .cancel {
+        background: #f44336;
+        margin-left: 1.5rem;
+      }
+    }
+  }
+  &__password-form{ display: none; }
+  &__forms{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 2rem auto 0 auto;
+  }
+  &__form-big-wrapper{
+    position: relative;
+    width: 47% !important;
+  }
+  //&__form-mini-wrapper {
+  //  width: 50% !important;
+  //}
+  &__form-wrapper{
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 20px 40px;
+    background: $white;
+    overflow-y: auto;
+    @media screen and (min-width: 768px){
+      //padding: 6% 10%;
+      border-radius: 10px;
+      overflow-y: visible;
+    }
+  }
+
+  &__prev-btn{
+    width:24px;
+    height: 24px;
+    background: none;
+    padding: 0;
+    svg{ transition: fill 0.3s; }
+    &:hover > svg{ fill: $blue2; }
+  }
+
+  &__headers{
+    text-align: left;
+    width: 100%;
+  }
+
+  &__header{
+    font-size: 3rem;
+    &:first-child{ border-bottom: 4px solid $purple; }
+    &.active > .panel__link{
+      color: $white;
+      font-size: 6rem;
+    }
+  }
+
+  &__link{
+    font-size: 1.5rem;
+    white-space: nowrap;
+    color: $black;
+    transition: all 0.3s;
+    font-weight: 600;
+  }
+}
+/**
+ * Styles for <form>
+ */
+.calendar {
+  width: 40px;
+  left: -40px;
+  position: absolute;
+  height: 31px;
+  cursor: pointer;
+  .v3dp__clearable {
+    display: none;
+  }
+  input {
+    opacity: 0;
+  }
+}
+.icon-calendar {
+  position: absolute;
+  left: 12px;
+  padding: 2px 4px;
+  bottom: 4px;
+  background: $white;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.calendar:hover .icon-calendar {
+  background: $purple;
+}
+
+.calendar:hover .icon-calendar svg {
+  transition: all 0.3s;
+  fill: $white;
+}
+.form{
+  &__passwords{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__img{
+    img{
+      width: 100%;
+    }
+  }
+  &__row{
+    position: relative;
+    margin-top: 25px;
+    &.has-error > .form__error:after{
+      display: block;
+    }
+  }
+  &__row-two{
+    border-bottom: 1px solid $gray;
+    border-radius: 0px;
+    position: relative;
+    margin-top: 40px;
+  }
+  &__input{
+    width: 100%;
+    padding: 5px 14px;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    background-color: unset !important;
+    &:focus, &:active, &:focus-visible{
+      outline: 0;
+      background-color: unset !important;
+    }
+    &:focus ~ .form__label,
+    &:active ~ .form__label,
+    &:valid ~ .form__label{
+      bottom: 30px;
+      font-size: 0.75rem;
+    }
+    &:focus ~ .form__bar,
+    &:active ~ .form__bar{
+      left: 0;
+      right: 0;
+      width: 100%;
+    }
+  }
+  &__bar{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: $purple;
+    transition: all 0.3s;
+  }
+  &__label{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    transition: all 0.3s;
+    pointer-events: none;
+    color: $gray;
+  }
+  &__submit{
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    background: $gradient1;
+    transition: all 0.3s;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  &__retrieve-pass{
+    display: block;
+    padding: 15px 0;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    transition: all 0.3s;
+    &:hover{
+      color: $white;
+    }
+  }
+
+  &__error{
+    position: absolute;
+    bottom: -20px;
+    display: block;
+    width: 100%;
+    height: 20px;
+    color: #f44336;
+    font-size: 0.75rem;
+    line-height: 20px;
+    &:after{
+      content: 'x';
+      position: absolute;
+      bottom: 20px;
+      right: -20px;
+      display: none;
+      width: 20px;
+      height: 25px;
+      font-size: 1.125rem;
+      line-height: 25px;
+      text-align: center;
+      color: $blue2;
+    }
+  }
+  &__info{
+    text-align: center;
+  }
+}
+
+// vue-tel-input
+
+.vue-tel-input {
+  border-radius: 4px !important;
+}
+
+.vue-tel-input:active, .vue-tel-input:focus-visible, .vue-tel-input:focus {
+  box-shadow: unset !important;
+}
+.vti__dropdown-list {
+  z-index: 2;
+}
+.open .vti__dropdown-arrow {
+  color: $purple;
+}
+
+//v-select
+.v3dp__elements button.selected span {
+  background: $gradient1 !important;
+  color: var(--elem-selected-color);
+}
+
+.v3dp__elements button:hover span {
+  background: $purple !important;
+  color: var(--elem-selected-color);
+}
+
+.vs--searchable .vs__dropdown-toggle {
+  background-color: var(--kt-input-solid-bg);
+  border-color: $gray;
+  color: $gray;
+  min-height: fit-content;
+  padding: 7px 14px;
+  font-size: 0.938rem;
+  border-radius: 4px;
+}
+
+.vs__dropdown-menu li:hover, .vs__dropdown-menu li:focus {
+  background-color: $purple !important;
+  color: $white !important;
+}
+
+.vs__dropdown-menu li:hover, .vs__dropdown-menu li {
+  background-color: $white;
+  color: $black;
+}
+
+.vs__open-indicator {
+  width: 31px;
+}
+
+.vs--open .vs__open-indicator {
+  fill: $purple !important;
+}
+
+.vs--open .vs__dropdown-menu {
+  border-color: $gray;
+}
+
+.vs__dropdown-toggle {
+
+}
+
+.vs__selected, .vs__actions, .vs__search, .vs__search:focus, .vs__selected-options, .vs__actions {
+  border: unset !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.vs__search {
+  color: var(--kt-text-gray-500) !important;
+}
+
+.vs__search, .vs__search:focus, .vs__selected {
+  font-size: 0.938rem !important;
+  font-weight: 500;
+}
+.vs__selected {
+  color: var(--kt-input-solid-color) !important;
+}
+.vs__clear {
+  display: flex;
+  margin-right: 0px;
+}
+
+// header
+
+header {
+  width: 100%;;
+  background: $white;
+  padding: 0.8rem 2rem;
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__link {
+  cursor: pointer;;
+}
+
+.header__nav-ul {
+  display: flex;
+}
+
+// footer
+
+footer {
+  width: 100%;
+  background: #fff;
+  padding: 0.8rem 2rem;
+}
+
+.edit {
+  right: -17px;
+  bottom: -15px;
+}
+
+.delete {
+  left: -10px;
+  top: -10px;
+}
+
+.button__img {
+  position: absolute;
+  width: fit-content;
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
