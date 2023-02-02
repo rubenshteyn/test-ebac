@@ -87,7 +87,7 @@
               <input type="text" id="date_birth" class="form__input" @change="checkDate(this.currentDate)" v-model="this.currentDate" name="date_birth" required>
               <span class="form__bar"></span>
               <label for="date_birth" class="form__label">Date birth</label>
-              <span class="form__error" v-if="checkDate(this.currentDate) === false">Введена некорректная дата!</span>
+              <span class="form__error" v-if="checkDate(this.currentDate) === false">Invalid date entered!</span>
             </div>
             <div class="form__row form__row-two">
               <input type="text" id="register-email" class="form__input" name="register-mail" data-validation="email" data-error="Invalid email address." required>
@@ -148,10 +148,10 @@
                 <button @click="clearPasswords()" class="form__submit cancel">Cancel</button>
               </div>
               <div class="form__row form__errors">
-                <span class="form__error" v-show="checkPassword() === false">Введен некоррекный пароль!</span>
-                <span class="form__error" v-show="checkPassword() === 'coincidence'">Введенные пароли совпадают!</span>
-                <span class="form__error" v-show="checkPassword() === 'smaller'">Введенный пароль слишком короткий!</span>
-                <span class="form__error" v-show="checkPassword() === 'more'">Введенный пароль слишком длинный!</span>
+                <span class="form__error" v-show="checkPassword() === false">Wrong password entered!</span>
+                <span class="form__error" v-show="checkPassword() === 'coincidence'">The entered passwords match!</span>
+                <span class="form__error" v-show="checkPassword() === 'smaller'">The entered password is too short!</span>
+                <span class="form__error" v-show="checkPassword() === 'more'">The entered password is too long!</span>
               </div>
             </form>
           </div>
